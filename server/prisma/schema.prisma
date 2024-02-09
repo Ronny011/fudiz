@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Place {
+  id Int @id @default(autoincrement())
+  rest_name String @db.VarChar(30)
+  rest_image String
+  rest_url String
+  rate_food Float
+  rate_service Float?
+  rate_vibe Float?
+  rate_final Decimal
+  notes String @db.VarChar(140)
+  city String @db.VarChar(20)
+  cuisine String @db.VarChar(30)
+  keywords String
+  did_visit Boolean @default(false)
+}
